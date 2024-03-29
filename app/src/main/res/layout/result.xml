@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DVLA Vehicle Information"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/registrationNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration Number: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/taxStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tax Status: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registrationNumberTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/taxDueDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tax Due Date: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taxStatusTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/motStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOT Status: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taxDueDateTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/makeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motStatusTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/yearOfManufactureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year of Manufacture: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/engineCapacityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Engine Capacity: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearOfManufactureTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/co2EmissionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CO2 Emissions: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/engineCapacityTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/fuelTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fuel Type: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/co2EmissionsTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/markedForExportTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marked for Export: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fuelTypeTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/colourTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colour: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markedForExportTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/typeApprovalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type Approval: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colourTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/revenueWeightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Revenue Weight: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeApprovalTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/euroStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Euro Status: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/revenueWeightTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/dateOfLastV5CIssuedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date of Last V5C Issued: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/euroStatusTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/wheelplanTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wheelplan: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateOfLastV5CIssuedTextView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/monthOfFirstRegistrationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Month of First Registration: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wheelplanTextView"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
