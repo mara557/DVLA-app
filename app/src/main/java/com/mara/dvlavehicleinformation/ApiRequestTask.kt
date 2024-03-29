@@ -11,7 +11,7 @@ class ApiRequestTask(private val registrationNumber: String, private val callbac
 
     override fun doInBackground(vararg params: Void?): String {
         val apiUrl = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
-        val apiKey = "L3XcqiNpcy8C6R458ZDTL5bCJNazXAdB4US6CQKY"
+        val apiKey = System.getenv("API_KEY") ?: "" // Accessing the API key from environment variables
         val requestBody = "{\"registrationNumber\": \"$registrationNumber\"}" // JSON request body
 
         var response = ""
