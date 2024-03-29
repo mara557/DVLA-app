@@ -6,12 +6,15 @@ import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ApiRequestTask(private val registrationNumber: String, private val callback: (String) -> Unit) :
-    AsyncTask<Void, Void, String>() {
+
+class ApiRequestTask(
+    private val registrationNumber: String,
+    private val apiKey: String, // Accept API key as a parameter
+    private val callback: (String) -> Unit // Callback function to handle API response
+) : AsyncTask<Void, Void, String>() {
 
     override fun doInBackground(vararg params: Void?): String {
         val apiUrl = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
-        val apiKey = System.getenv("API_KEY") ?: "" // Accessing the API key from environment variables
         val requestBody = "{\"registrationNumber\": \"$registrationNumber\"}" // JSON request body
 
         var response = ""
@@ -21,7 +24,7 @@ class ApiRequestTask(private val registrationNumber: String, private val callbac
             connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
             connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("x-api-key", apiKey)
+            connection.setRequestProperty("x-api-key", apiKey) // Use the provided API key
             connection.doOutput = true
 
             val outputStream: OutputStream = connection.outputStream
@@ -51,6 +54,6 @@ class ApiRequestTask(private val registrationNumber: String, private val callbac
 
     override fun onPostExecute(result: String) {
         Log.d("API_RESPONSE", result ?: "No response received")
-        callback(result)
+        callback(result) // Execute the callback function with the API response
     }
 }
