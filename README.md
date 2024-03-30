@@ -1,4 +1,5 @@
 DVLA Vehicle Information App
+
 This Android application allows users to retrieve vehicle information from the DVLA (Driver and Vehicle Licensing Agency) database using the vehicle registration number. The app sends a request to the DVLA API and displays the retrieved information to the user.
 
 Features
@@ -6,6 +7,7 @@ Input field to enter the vehicle registration number.
 Submit button to initiate the API request.
 Displays vehicle information retrieved from the DVLA database.
 Error handling for invalid input and API responses.
+
 Usage
 Clone the Repository: Clone this repository to your local machine using the following command:
 
@@ -28,7 +30,6 @@ View Results: Once the request is processed, the app will display the retrieved 
 
 Components
 ApiKeyProvider: Provides methods to retrieve the API key required to access the DVLA API.
-
 ApiRequestTask: AsyncTask subclass responsible for making the API request to the DVLA API. Executes the request in the background and returns the response to the main thread. Handles communication with the API including setting headers and parsing response.
 
 MainActivity: Main activity of the app where users can enter the vehicle registration number. Validates input and navigates to the ResultsActivity upon submission.
