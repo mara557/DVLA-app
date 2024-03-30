@@ -1,5 +1,7 @@
 import android.os.AsyncTask
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStream
@@ -7,12 +9,23 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import com.mara.dvlavehicleinformation.R
 
 class ApiRequestTask(
     private val context: Context,
     private val registrationNumber: String,
     private val callback: (String) -> Unit
 ) : AsyncTask<Void, Void, String>() {
+
+    private lateinit var progressBar: ProgressBar
+
+    override fun onPreExecute() {
+        super.onPreExecute()
+        // Show loading indicator
+        progressBar = (context as AppCompatActivity).findViewById(R.id.loadingProgressBar)
+        progressBar.visibility = View.VISIBLE
+    }
 
     override fun doInBackground(vararg params: Void?): String {
         val apiUrl = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
@@ -55,6 +68,9 @@ class ApiRequestTask(
     }
 
     override fun onPostExecute(result: String) {
+        // Hide loading indicator
+        progressBar.visibility = View.GONE
+
         Log.d("API_RESPONSE", result ?: "No response received")
         callback(result)
     }
