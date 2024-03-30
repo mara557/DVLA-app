@@ -11,10 +11,10 @@ This Android application allows users to retrieve vehicle information from the D
   ## Usage
 ### Clone the Repository:
 Clone this repository to your local machine using the following command:
-```bash
-git clone <repository_URL>
+>```bash
+>git clone <repository_URL>
 
-## Import Project in Android Studio
+### Import Project in Android Studio
 1. Open Android Studio.
 2. Select "File" > "Open" from the menu bar.
 3. Navigate to the location where you cloned the project.
