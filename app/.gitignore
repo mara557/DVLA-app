@@ -1,1 +1,4 @@
 /build
+
+# Config files
+/app/src/main/res/raw/config.properties

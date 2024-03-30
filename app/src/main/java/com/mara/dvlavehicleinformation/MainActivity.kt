@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,9 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("registrationNumber", registrationNumber)
             startActivity(intent)
         } else {
-            // Show an error message or handle the empty input case
+            // Show an error message for empty input
+            val errorMessageTextView = findViewById<TextView>(R.id.errorMessageTextView)
+            errorMessageTextView.text = "Please enter a registration number."
         }
     }
 }

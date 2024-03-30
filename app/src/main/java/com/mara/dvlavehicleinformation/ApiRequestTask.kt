@@ -6,15 +6,17 @@ import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
+import android.content.Context
 
 class ApiRequestTask(
+    private val context: Context,
     private val registrationNumber: String,
-    private val apiKey: String, // Accept API key as a parameter
-    private val callback: (String) -> Unit // Callback function to handle API response
+    private val callback: (String) -> Unit
 ) : AsyncTask<Void, Void, String>() {
 
     override fun doInBackground(vararg params: Void?): String {
         val apiUrl = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
+        val apiKey = ApiKeyProvider.getApiKey(context) // Access the API key
         val requestBody = "{\"registrationNumber\": \"$registrationNumber\"}" // JSON request body
 
         var response = ""
@@ -24,7 +26,7 @@ class ApiRequestTask(
             connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
             connection.setRequestProperty("Content-Type", "application/json")
-            connection.setRequestProperty("x-api-key", apiKey) // Use the provided API key
+            connection.setRequestProperty("x-api-key", apiKey)
             connection.doOutput = true
 
             val outputStream: OutputStream = connection.outputStream
@@ -54,6 +56,6 @@ class ApiRequestTask(
 
     override fun onPostExecute(result: String) {
         Log.d("API_RESPONSE", result ?: "No response received")
-        callback(result) // Execute the callback function with the API response
+        callback(result)
     }
 }
