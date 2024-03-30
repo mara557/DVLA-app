@@ -1,6 +1,7 @@
 DVLA Vehicle Information App
 
-This Android application allows users to retrieve vehicle information from the DVLA (Driver and Vehicle Licensing Agency) database using the vehicle registration number. The app sends a request to the DVLA API and displays the retrieved information to the user.
+This Android application allows users to retrieve vehicle information from the DVLA (Driver and Vehicle Licensing Agency) database using the vehicle registration number. 
+The app sends a request to the DVLA API and displays the retrieved information to the user.
 
 Features
 Input field to enter the vehicle registration number.
