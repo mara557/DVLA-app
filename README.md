@@ -8,22 +8,21 @@ This Android application allows users to retrieve vehicle information from the D
 - Displays vehicle information retrieved from the DVLA database.
 - Error handling for invalid input and API responses.
 
-  ## Usage
+## Usage
 ### Clone the Repository:
 Clone this repository to your local machine using the following command:
 >```bash
 >git clone <repository_URL>
 
-### Import Project in Android Studio
-1. Open Android Studio.
-2. Select "File" > "Open" from the menu bar.
-3. Navigate to the location where you cloned the project.
-4. Select the project's `build.gradle` file.
-5. Click "Open" to import the project into Android Studio.
-
-
 ## API Key Setup
-Obtain an API key from DVLA. This API key is required to access the DVLA API. Place your API key in the `config.properties` file located in the `res/raw` directory. Ensure that the key is named `api.key`.
+Obtain an API key from DVLA. This API key is required to access the DVLA API.
+
+**Important:** To secure your API key, we've hidden the `config.properties` file from GitHub. You need to manually create this file and directory and add your API key to it. Follow these steps:
+
+1. Create a new file named `config.properties` in the `res/raw` directory of the project.
+2. Add your API key to the `config.properties` file in the following format:
+   api.key=your_api_key_here
+Replace `your_api_key_here` with your actual DVLA API key.
 
 ## Build and Run
 1. Build and run the project on an Android emulator or a physical device.
@@ -36,9 +35,6 @@ Obtain an API key from DVLA. This API key is required to access the DVLA API. Pl
 - **ApiRequestTask:** AsyncTask subclass responsible for making the API request to the DVLA API. Executes the request in the background and returns the response to the main thread. Handles communication with the API including setting headers and parsing response.
 - **MainActivity:** Main activity of the app where users can enter the vehicle registration number. Validates input and navigates to the ResultsActivity upon submission.
 - **ResultsActivity:** Displays the retrieved vehicle information to the user. Handles API response, parses JSON, and dynamically creates TextViews to display information. Provides error handling for invalid responses.
-
-## Dependencies
-This project does not rely on any third-party libraries or dependencies beyond the Android SDK.
 
 ## Support and Updates
 This application is a personal project developed for learning purposes and may or may not receive further updates.
