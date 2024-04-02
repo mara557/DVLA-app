@@ -11,21 +11,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Find the Submit button and set its click listener
+        val submitButton = findViewById<View>(R.id.submitButton)
+        submitButton.setOnClickListener {
+            onSubmit()
+        }
     }
 
-    fun onSubmit(view: View) {
+    private fun onSubmit() {
         val registrationNumberEditText = findViewById<EditText>(R.id.editTextText)
         val registrationNumber = registrationNumberEditText.text.toString().trim()
 
+        // Find the error message TextView
+        val errorMessageTextView = findViewById<TextView>(R.id.errorMessageTextView)
+
         // Check if the registration number is not empty
         if (registrationNumber.isNotEmpty()) {
+            // Clear any previous error messages
+            errorMessageTextView.text = ""
+
             // Navigate to the results activity and pass the registration number as an extra
             val intent = Intent(this, ResultsActivity::class.java)
             intent.putExtra("registrationNumber", registrationNumber)
             startActivity(intent)
         } else {
             // Show an error message for empty input
-            val errorMessageTextView = findViewById<TextView>(R.id.errorMessageTextView)
             errorMessageTextView.text = "Please enter a registration number."
         }
     }

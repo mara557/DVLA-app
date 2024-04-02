@@ -12,29 +12,36 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="DVLA Vehicle Information"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- EditText for Registration Number -->
-    <EditText
-        android:id="@+id/editTextText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registrationInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:hint="Registration Number"
-        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"/>
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxStrokeColor="@color/colorAccent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapCharacters"
+            android:textColor="@android:color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Submit Button -->
     <Button
@@ -42,11 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:onClick="onSubmit"
-        app:layout_constraintTop_toBottomOf="@id/editTextText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/registrationInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/registrationInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/registrationInputLayout" />
 
     <!-- Loading ProgressBar -->
     <ProgressBar
@@ -54,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/submitButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/submitButton"
+        app:layout_constraintEnd_toEndOf="@id/submitButton"
+        app:layout_constraintTop_toBottomOf="@id/submitButton" />
 
     <!-- TextView to display error messages -->
     <TextView
@@ -67,8 +75,9 @@
         android:text=""
         android:textColor="@android:color/holo_red_dark"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/submitButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/registrationInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/registrationInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/submitButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
