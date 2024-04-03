@@ -1,16 +1,16 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-/app/src/main/res/raw/config.properties  # Add this line for config.properties
+*.iml                # Exclude IntelliJ IDEA module files
+.gradle              # Exclude Gradle build files
+/local.properties   # Exclude local.properties file which contains local SDK path
+/.idea/caches       # Exclude IntelliJ IDEA cache directory
+/.idea/libraries    # Exclude IntelliJ IDEA library files
+/.idea/modules.xml  # Exclude IntelliJ IDEA module configuration file
+/.idea/workspace.xml # Exclude IntelliJ IDEA workspace file
+/.idea/navEditor.xml # Exclude IntelliJ IDEA navigation editor settings
+/.idea/assetWizardSettings.xml # Exclude IntelliJ IDEA asset wizard settings
+.DS_Store            # Exclude macOS specific .DS_Store files
+/build               # Exclude build directory
+/captures            # Exclude captures directory
+.externalNativeBuild # Exclude external native build directory
+.cxx                 # Exclude .cxx directory
+local.properties    # Exclude local.properties file
+/app/src/main/res/raw/config.properties   # Exclude config.properties file
