@@ -17,13 +17,20 @@ class ResultsActivity : AppCompatActivity() {
 
         val registrationNumber = intent.getStringExtra("registrationNumber")
 
-        // Execute AsyncTask to fetch vehicle information from API
-        if (registrationNumber != null) {
-            ApiRequestTask(this, registrationNumber) { result ->
-                handleApiResponse(result)
-            }.execute()
+        // Check if there's an error message passed from MainActivity
+        val errorMessageFromMain = intent.getStringExtra("errorMessage")
+        if (!errorMessageFromMain.isNullOrEmpty()) {
+            // Display error message passed from MainActivity
+            displayErrorMessage(errorMessageFromMain)
         } else {
-            displayErrorMessage("Invalid registration number")
+            // Execute AsyncTask to fetch vehicle information from API
+            if (registrationNumber != null) {
+                ApiRequestTask(this, registrationNumber) { result ->
+                    handleApiResponse(result)
+                }.execute()
+            } else {
+                displayErrorMessage("Invalid registration number")
+            }
         }
     }
 

@@ -26,7 +26,10 @@
             </intent-filter>
         </activity>
 
-        <!-- Add the ResultsActivity declaration -->
+        <!-- Add the ResultsActivityMOT declaration -->
+        <activity android:name=".ResultsActivityMOT" />
+
+        <!-- Add the ResultsActivityMOT declaration -->
         <activity android:name=".ResultsActivity" />
 
     </application>
