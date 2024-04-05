@@ -22,7 +22,7 @@ Obtain an API key from DVLA. This API key is required to access the DVLA API.
 1. Create a new file named `config.properties` in the `res/raw` directory of the project.
 2. Add your API key to the `config.properties` file in the following format:
    api.key=your_api_key_here
-Replace `your_api_key_here` with your actual DVLA API key.
+Replace `your_api_key_here` and `your_api_key_mot_here` with your actual DVLA & MOT API keys.
 
 ## Build and Run
 1. Build and run the project on an Android emulator or a physical device.
@@ -31,10 +31,13 @@ Replace `your_api_key_here` with your actual DVLA API key.
 4. View Results: Once the request is processed, the app will display the retrieved vehicle information on the screen.
 
 ## Components
-- **ApiKeyProvider:** Provides methods to retrieve the API key required to access the DVLA API.
-- **ApiRequestTask:** AsyncTask subclass responsible for making the API request to the DVLA API. Executes the request in the background and returns the response to the main thread. Handles communication with the API including setting headers and parsing response.
+- **ApiKeyProvider:** Provides methods to retrieve the API keys required to access the DVLA and MOT APIs.
+- **ApiRequestTask:** AsyncTask subclass responsible for making the API requests to the DVLA and MOT APIs. Executes the requests in the background and returns the responses to the main thread. Handles communication with the APIs including setting headers and parsing responses.
 - **MainActivity:** Main activity of the app where users can enter the vehicle registration number. Validates input and navigates to the ResultsActivity upon submission.
-- **ResultsActivity:** Displays the retrieved vehicle information to the user. Handles API response, parses JSON, and dynamically creates TextViews to display information. Provides error handling for invalid responses.
+- **ResultsActivity:** Displays the retrieved vehicle information from the DVLA API to the user. Handles API response, parses JSON, and dynamically creates TextViews to display information. Provides error handling for invalid responses.
+- **ResultsActivityMOT:** Displays the retrieved MOT history information to the user. Handles API response, parses JSON, and dynamically creates TextViews to display information. Provides error handling for invalid responses.
+### Note:
+This project is currently at a sketch level and may not have a detailed or finalized architecture.
 
 ## Support and Updates
 This application is a personal project developed for learning purposes and may or may not receive further updates.
