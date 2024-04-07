@@ -16,7 +16,8 @@ class ResultsActivityMOT : AppCompatActivity() {
 
     private lateinit var loadingProgressBar: ProgressBar
     private lateinit var errorMessageTextView: TextView
-    private lateinit var dynamicLayout: LinearLayout
+    private lateinit var firstSectionLayout: LinearLayout
+    private lateinit var secondSectionLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,8 @@ class ResultsActivityMOT : AppCompatActivity() {
 
         loadingProgressBar = findViewById(R.id.loadingProgressBarMOT)
         errorMessageTextView = findViewById(R.id.errorMessageTextViewMOT)
-        dynamicLayout = findViewById(R.id.dynamicLayoutMOT)
+        firstSectionLayout = findViewById(R.id.firstSectionContentLayout)
+        secondSectionLayout = findViewById(R.id.secondSectionContentLayout)
 
         val apiURL = intent.getStringExtra("apiURL")
         Log.d("API_REQUEST", "API URL from Intent: $apiURL")
@@ -48,7 +50,8 @@ class ResultsActivityMOT : AppCompatActivity() {
 
         try {
             val jsonArray = JSONArray(response)
-            dynamicLayout.removeAllViews()
+            firstSectionLayout.removeAllViews()
+            secondSectionLayout.removeAllViews()
 
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
@@ -64,9 +67,9 @@ class ResultsActivityMOT : AppCompatActivity() {
 
                 for (key in keys) {
                     val value = jsonObject.optString(key)
-                    addTextView("$key: $value", Color.BLACK)
+                    addTextView("$key: $value", Color.BLACK, firstSectionLayout)
                 }
-                addDivider()
+                addDivider(firstSectionLayout)
 
                 val motTestsArray = jsonObject.optJSONArray("motTests")
                 motTestsArray?.let {
@@ -86,9 +89,9 @@ class ResultsActivityMOT : AppCompatActivity() {
                                 "Expiry Date: $expiryDate\n" + // Include Expiry Date
                                 "Odometer Value: $odometerValue $odometerUnit\n" + // Include Odometer Unit
                                 "Odometer Result Type: $odometerResultType" // Include Odometer Result Type
-                        addTextView(motTestDetails, Color.BLUE)
+                        addTextView(motTestDetails, Color.BLUE, secondSectionLayout)
 
-                        addDivider()
+                        addDivider(secondSectionLayout)
 
                         val rfrAndCommentsArray = motTestObject.optJSONArray("rfrAndComments")
                         rfrAndCommentsArray?.let {
@@ -101,8 +104,8 @@ class ResultsActivityMOT : AppCompatActivity() {
                                         "Text: $text\n" +
                                         "Type: $type\n" +
                                         "Dangerous: $dangerous"
-                                addTextView(rfrAndCommentsDetails, Color.RED)
-                                addDivider()
+                                addTextView(rfrAndCommentsDetails, Color.RED, secondSectionLayout)
+                                addDivider(secondSectionLayout)
                             }
                         }
                     }
@@ -115,16 +118,15 @@ class ResultsActivityMOT : AppCompatActivity() {
         }
     }
 
-
-    private fun addTextView(text: String, color: Int) {
+    private fun addTextView(text: String, color: Int, layout: LinearLayout) {
         val textView = TextView(this)
         textView.text = text
         textView.setTextColor(color)
         textView.textSize = 16f
-        dynamicLayout.addView(textView)
+        layout.addView(textView)
     }
 
-    private fun addDivider() {
+    private fun addDivider(layout: LinearLayout) {
         val divider = View(this)
         divider.setBackgroundColor(Color.GRAY)
         val params = LinearLayout.LayoutParams(
@@ -132,7 +134,7 @@ class ResultsActivityMOT : AppCompatActivity() {
             2
         )
         divider.layoutParams = params
-        dynamicLayout.addView(divider)
+        layout.addView(divider)
     }
 
     private fun showLoading() {
