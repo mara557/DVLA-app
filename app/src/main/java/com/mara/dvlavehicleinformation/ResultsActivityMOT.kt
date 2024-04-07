@@ -52,8 +52,12 @@ class ResultsActivityMOT : AppCompatActivity() {
 
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
+                val registration = jsonObject.optString("registration")
+                val registrationTextView = findViewById<TextView>(R.id.registrationTextView)
+                registrationTextView.text = "Registration: $registration"
+
                 val keys = arrayOf(
-                    "registration", "make", "model", "firstUsedDate", "fuelType",
+                    "make", "model", "firstUsedDate", "fuelType",
                     "primaryColour", "vehicleId", "registrationDate", "manufactureDate",
                     "engineSize"
                 )
@@ -73,11 +77,15 @@ class ResultsActivityMOT : AppCompatActivity() {
                         val testNumber = motTestObject.optString("motTestNumber")
                         val odometerValue = motTestObject.optString("odometerValue")
                         val odometerUnit = motTestObject.optString("odometerUnit")
+                        val expiryDate = motTestObject.optString("expiryDate") // New field
+                        val odometerResultType = motTestObject.optString("odometerResultType") // New field
                         val motTestDetails = "MOT Test Details:\n" +
                                 "Completed Date: $completedDate\n" +
                                 "Test Result: $testResult\n" +
                                 "Test Number: $testNumber\n" +
-                                "Odometer Value: $odometerValue $odometerUnit"
+                                "Expiry Date: $expiryDate\n" + // Include Expiry Date
+                                "Odometer Value: $odometerValue $odometerUnit\n" + // Include Odometer Unit
+                                "Odometer Result Type: $odometerResultType" // Include Odometer Result Type
                         addTextView(motTestDetails, Color.BLUE)
 
                         addDivider()
@@ -106,6 +114,7 @@ class ResultsActivityMOT : AppCompatActivity() {
             Log.e("JSON_PARSE_ERROR", "Error parsing JSON: ${e.message}")
         }
     }
+
 
     private fun addTextView(text: String, color: Int) {
         val textView = TextView(this)
