@@ -18,6 +18,12 @@ class MainActivity : AppCompatActivity() {
             onSubmitDvla()
         }
 
+        // Find the AskMID button and set its click listener
+        val askMidButton = findViewById<View>(R.id.askMidButton)
+        askMidButton.setOnClickListener {
+            openAskMidWebPage()
+        }
+
         // Find the Submit button for MOT History and set its click listener
         val submitButtonMot = findViewById<View>(R.id.submitButtonMot)
         submitButtonMot.setOnClickListener {
@@ -45,6 +51,12 @@ class MainActivity : AppCompatActivity() {
             // Show an error message for empty input
             errorMessageTextViewDvla.text = "Please enter a registration number."
         }
+    }
+
+    private fun openAskMidWebPage() {
+        // Navigate to the AskMID webpage activity
+        val intent = Intent(this, AskMidActivity::class.java)
+        startActivity(intent)
     }
 
     private fun onSubmitMot() {

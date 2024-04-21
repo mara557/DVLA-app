@@ -155,4 +155,33 @@
         app:layout_constraintEnd_toEndOf="@id/registrationInputLayoutMot"
         app:layout_constraintTop_toBottomOf="@id/submitButtonMot" />
 
+    <!-- Add this code below the MOT History section -->
+
+    <!-- Title TextView for AskMID -->
+    <TextView
+        android:id="@+id/titleAskMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AskMID"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/errorMessageTextViewMot" />
+
+    <!-- AskMID Button -->
+    <Button
+        android:id="@+id/askMidButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AskMID"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/titleAskMid"
+        app:layout_constraintEnd_toEndOf="@id/titleAskMid"
+        app:layout_constraintTop_toBottomOf="@id/titleAskMid" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
