@@ -20,6 +20,7 @@ class ApiRequestTask(
 
     private lateinit var progressBar: ProgressBar
 
+    @Deprecated("Deprecated in Java")
     override fun onPreExecute() {
         super.onPreExecute()
         // Show loading indicator
@@ -27,6 +28,7 @@ class ApiRequestTask(
         progressBar.visibility = View.VISIBLE
     }
 
+    @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg params: Void?): String {
         val apiUrl = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
         val apiKey = ApiKeyProvider.getApiKey(context) // Access the API key
@@ -67,6 +69,7 @@ class ApiRequestTask(
         return response
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onPostExecute(result: String) {
         // Hide loading indicator
         progressBar.visibility = View.GONE

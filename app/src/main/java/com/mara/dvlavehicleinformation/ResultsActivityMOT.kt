@@ -39,7 +39,7 @@ class ResultsActivityMOT : AppCompatActivity() {
     private fun fetchDataFromAPI(apiURL: String) {
         showLoading()
 
-        val apiRequestTask = MOTApiRequestTask(this, apiURL) { response ->
+        val apiRequestTask = VehicleInformationApiTask(this, apiURL) { response ->
             handleApiResponse(response)
         }
         apiRequestTask.execute()
