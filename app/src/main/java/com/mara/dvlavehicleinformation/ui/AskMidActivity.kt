@@ -1,10 +1,10 @@
-package com.mara.dvlavehicleinformation
+package com.mara.dvlavehicleinformation.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import com.mara.dvlavehicleinformation.R
 
 class AskMidActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

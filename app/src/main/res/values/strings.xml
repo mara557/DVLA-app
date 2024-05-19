@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">DVLA vehicle information</string>
+    <string name="registration_label">Registration: %s</string>
+    <string name="json_parse_error">Error parsing JSON: %s</string>
+    <string name="completed_date_label">Completed Date: %s</string>
+    <string name="test_result_label">Test Result: %s</string>
+    <string name="test_number_label">Test Number: %s</string>
+    <string name="expiry_date_label">Expiry Date: %s</string>
+    <string name="odometer_label">Odometer: %s %s</string>
+    <string name="odometer_result_type_label">Odometer Result Type: %s</string>
+    <string name="type_label">Type: %s</string>
+    <string name="dangerous_label">Dangerous: %s</string>
 </resources>

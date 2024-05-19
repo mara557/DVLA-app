@@ -1,6 +1,6 @@
-package com.mara.dvlavehicleinformation
+package com.mara.dvlavehicleinformation.ui
 
-import ApiRequestTask
+
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import com.mara.dvlavehicleinformation.R
+import com.mara.dvlavehicleinformation.data.api.ApiRequestTask
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*

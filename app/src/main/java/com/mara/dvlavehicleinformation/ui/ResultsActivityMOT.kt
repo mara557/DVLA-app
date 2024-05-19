@@ -1,14 +1,20 @@
-package com.mara.dvlavehicleinformation
+package com.mara.dvlavehicleinformation.ui
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.mara.dvlavehicleinformation.R
+import com.mara.dvlavehicleinformation.data.api.VehicleInformationApiTask
+import com.mara.dvlavehicleinformation.data.api.ApiRequestTask
 import org.json.JSONArray
 import org.json.JSONException
 
@@ -28,11 +34,17 @@ class ResultsActivityMOT : AppCompatActivity() {
         firstSectionLayout = findViewById(R.id.firstSectionContentLayout)
         secondSectionLayout = findViewById(R.id.secondSectionContentLayout)
 
+        val registrationNumber = intent.getStringExtra("registrationNumber")
         val apiURL = intent.getStringExtra("apiURL")
+        val result = intent.getStringExtra("result")
+
+        Log.d("API_REQUEST", "Registration Number: $registrationNumber")
         Log.d("API_REQUEST", "API URL from Intent: $apiURL")
 
-        apiURL?.let {
-            fetchDataFromAPI(it)
+        if (!apiURL.isNullOrEmpty()) {
+            fetchDataFromAPI(apiURL)
+        } else {
+            showErrorMessage("Invalid API URL")
         }
     }
 
@@ -67,7 +79,7 @@ class ResultsActivityMOT : AppCompatActivity() {
 
                 for (key in keys) {
                     val value = jsonObject.optString(key)
-                    addTextView("$key: $value", Color.BLACK, firstSectionLayout)
+                    addTextView(SpannableStringBuilder("$key: $value"), Color.BLACK, firstSectionLayout)
                 }
                 addDivider(firstSectionLayout)
 
@@ -80,16 +92,28 @@ class ResultsActivityMOT : AppCompatActivity() {
                         val testNumber = motTestObject.optString("motTestNumber")
                         val odometerValue = motTestObject.optString("odometerValue")
                         val odometerUnit = motTestObject.optString("odometerUnit")
-                        val expiryDate = motTestObject.optString("expiryDate") // New field
-                        val odometerResultType = motTestObject.optString("odometerResultType") // New field
-                        val motTestDetails = "MOT Test Details:\n" +
-                                "Completed Date: $completedDate\n" +
-                                "Test Result: $testResult\n" +
-                                "Test Number: $testNumber\n" +
-                                "Expiry Date: $expiryDate\n" + // Include Expiry Date
-                                "Odometer Value: $odometerValue $odometerUnit\n" + // Include Odometer Unit
-                                "Odometer Result Type: $odometerResultType" // Include Odometer Result Type
-                        addTextView(motTestDetails, Color.BLUE, secondSectionLayout)
+                        val expiryDate = motTestObject.optString("expiryDate")
+                        val odometerResultType = motTestObject.optString("odometerResultType")
+
+                        val testResultColor = if (testResult == "FAILED") Color.RED else Color.GREEN
+                        val testResultSpannable = SpannableString("Test Result: $testResult")
+                        testResultSpannable.setSpan(
+                            ForegroundColorSpan(testResultColor),
+                            "Test Result: ".length,
+                            testResultSpannable.length,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+
+                        val motTestDetails = SpannableStringBuilder()
+                            .append("MOT Test Details:\n")
+                            .append("Completed Date: $completedDate\n")
+                            .append(testResultSpannable)
+                            .append("\nTest Number: $testNumber\n")
+                            .append("Expiry Date: $expiryDate\n")
+                            .append("Odometer Value: $odometerValue $odometerUnit\n")
+                            .append("Odometer Result Type: $odometerResultType")
+
+                        addTextView(motTestDetails, Color.BLACK, secondSectionLayout)
 
                         addDivider(secondSectionLayout)
 
@@ -104,7 +128,7 @@ class ResultsActivityMOT : AppCompatActivity() {
                                         "Text: $text\n" +
                                         "Type: $type\n" +
                                         "Dangerous: $dangerous"
-                                addTextView(rfrAndCommentsDetails, Color.RED, secondSectionLayout)
+                                addTextView(SpannableStringBuilder(rfrAndCommentsDetails), Color.RED, secondSectionLayout)
                                 addDivider(secondSectionLayout)
                             }
                         }
@@ -118,7 +142,7 @@ class ResultsActivityMOT : AppCompatActivity() {
         }
     }
 
-    private fun addTextView(text: String, color: Int, layout: LinearLayout) {
+    private fun addTextView(text: SpannableStringBuilder, color: Int, layout: LinearLayout) {
         val textView = TextView(this)
         textView.text = text
         textView.setTextColor(color)
